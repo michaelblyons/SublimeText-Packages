@@ -149,18 +149,29 @@ contexts:
       scope: support.function.system.sql
     - match: (?i)\b(patindex|textptr|textvalid)\b
       scope: support.function.textimage.sql
-    - match: (\w+?)\.(\w+)
+    - match: \b(?:(\w+?)(\.)((dbo)?(\.)))?(\w+?)(\.)(\w+)\b
       captures:
-        1: constant.other.database-name.sql
-        2: constant.other.table-name.sql
+        1: entity.name.label.database-name.sql
+        2: punctuation.accessor.dot.sql
+        4: constant.language.dbo.mssql
+        5: punctuation.accessor.dot.sql
+        6: constant.other.table-name.sql
+        7: punctuation.accessor.dot.sql
+        8: variable.other.column-name.sql
     - include: strings
     - include: regexps
+    - match: ','
+      scope: punctuation.separator.sequence.sql
     - match: (\()(\))
       comment: Allow for special ↩ behavior
       scope: meta.block.sql
       captures:
         1: punctuation.section.scope.begin.sql
         2: punctuation.section.scope.end.sql
+    - match: \(
+      scope: punctuation.section.parens.begin.sql
+    - match: \)
+      scope: punctuation.section.parens.end.sql
 
   comments:
     - match: '--'
