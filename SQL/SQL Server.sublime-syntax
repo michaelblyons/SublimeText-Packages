@@ -149,6 +149,13 @@ contexts:
       scope: support.function.system.sql
     - match: (?i)\b(patindex|textptr|textvalid)\b
       scope: support.function.textimage.sql
+    - match: \b(?:(\w+?)(\.)((dbo)?(\.)))(\w+?)\b
+      captures:
+        1: entity.name.label.database-name.sql
+        2: punctuation.accessor.dot.sql
+        4: constant.language.dbo.mssql
+        5: punctuation.accessor.dot.sql
+        6: constant.other.table-name.sql
     - match: \b(?:(\w+?)(\.)((dbo)?(\.)))?(\w+?)(\.)(\w+)\b
       captures:
         1: entity.name.label.database-name.sql
