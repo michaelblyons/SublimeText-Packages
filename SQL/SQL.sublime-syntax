@@ -5,6 +5,7 @@ file_extensions:
   - sql
   - ddl
   - dml
+first_line_match: (?i)^\s*(SELECT|SET\s+TRANSACTION)\b
 scope: source.sql
 contexts:
   main:
